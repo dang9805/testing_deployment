@@ -232,7 +232,7 @@ export const ResidentsPage = () => {
         setIsLoading(true);
         setError('');
         try {
-            const response = await fetch('${API_BASE_URL}/residents'); 
+            const response = await fetch(`${API_BASE_URL}/residents`); 
             if (!response.ok) {
                 throw new Error('Không thể tải dữ liệu cư dân.');
             }
