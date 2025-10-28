@@ -227,7 +227,7 @@ export const ResidentViewPage = () => { // <<< ĐỔI TÊN COMPONENT
         setError('');
         try {
             // Vẫn gọi API đọc danh sách như bình thường
-            const response = await fetch('${API_BASE_URL}/residents'); 
+            const response = await fetch(`${API_BASE_URL}/residents`); 
             if (!response.ok) {
                 throw new Error('Không thể tải dữ liệu cư dân.');
             }

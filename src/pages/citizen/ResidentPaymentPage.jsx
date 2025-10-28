@@ -98,7 +98,7 @@ export const ResidentPaymentPage = () => {
             // LƯU Ý: Nếu muốn chỉ hiển thị hóa đơn của cư dân đang đăng nhập, cần dùng API
             // /api/payment-status?resident_id=ID hoặc /api/payments/by-resident/ID
             // Ở đây, ta dùng tạm endpoint chung (giả định FE sẽ lọc sau hoặc BE đã filter)
-            const response = await fetch('${API_BASE_URL}/payments'); 
+            const response = await fetch(`${API_BASE_URL}/payments`); 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({ error: 'Lỗi không xác định khi tải dữ liệu.' }));
                 throw new Error(errorData.error || 'Không thể tải dữ liệu thanh toán.');

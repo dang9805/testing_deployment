@@ -49,7 +49,7 @@ const PaymentFormModal = ({ isOpen, onClose, onSave, residentOptions, error, set
 
         try {
             // Gọi API POST /payment
-            const response = await fetch('${API_BASE_URL}/payment', {
+            const response = await fetch(`${API_BASE_URL}/payment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dataToSend),
@@ -236,7 +236,7 @@ export const PaymentPage = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await fetch('${API_BASE_URL}/payments'); 
+            const response = await fetch(`${API_BASE_URL}/payments`); 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({ error: 'Lỗi không xác định khi tải dữ liệu.' }));
                 throw new Error(errorData.error || 'Không thể tải dữ liệu thanh toán.');
@@ -254,7 +254,7 @@ export const PaymentPage = () => {
     // <<< NEW: Hàm Fetch dữ liệu Cư dân (dùng cho form Add) >>>
     const fetchResidents = async () => {
         try {
-            const response = await fetch('${API_BASE_URL}/residents'); 
+            const response = await fetch(`${API_BASE_URL}/residents`); 
             if (!response.ok) {
                 throw new Error('Không thể tải danh sách cư dân.');
             }

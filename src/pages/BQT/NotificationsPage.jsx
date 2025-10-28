@@ -126,7 +126,7 @@ export const NotificationsPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-        const response = await fetch(`/api/notifications`); 
+        const response = await fetch(`${API_BASE_URL}/notifications`); 
         if (!response.ok) {
             throw new Error('Không thể tải dữ liệu thông báo.');
         }
@@ -182,7 +182,7 @@ export const NotificationsPage = () => {
     handleCloseAddModal(); // Đóng modal thêm
 
     try {
-        const response = await fetch('${API_BASE_URL}/notifications', {
+        const response = await fetch(`${API_BASE_URL}/notifications`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
