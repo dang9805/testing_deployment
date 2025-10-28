@@ -10,17 +10,20 @@ app.use(cors());
 
 // --- MySQL connection (khuyến nghị: chuyển sang POOL & dùng biến môi trường) ---
 const db = mysql.createConnection({ 
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || 'hungnohb123', // -> put into env var in production
-  database: process.env.DB_NAME || 'building_management',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER ,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   multipleStatements: false
+  // ssl:{
+  //   ca: process.env.DB_SSL_CA
+  // }
 });
 
 db.connect(err => {
   if (err) {
     console.error('❌ MySQL connect error:', err.message);
-    process.exit(1);
+    // process.exit(1);
   }
   console.log('✅ Kết nối MySQL thành công');
 });
