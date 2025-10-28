@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StatusModal } from "../../layouts/StatusModal";
 import { ConfirmationModal } from "../../layouts/ConfirmationModal";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 import acceptIcon from "../../images/accept_icon.png";
 import notAcceptIcon from "../../images/not_accept_icon.png";
@@ -72,7 +73,7 @@ export const ResidentNotificationsPage = () => {
     setError(null);
     try {
         // Gọi API GET /notifications
-        const response = await fetch('/api/notifications'); 
+        const response = await fetch('${API_BASE_URL}/notifications'); 
         if (!response.ok) {
             throw new Error('Không thể tải dữ liệu thông báo.');
         }

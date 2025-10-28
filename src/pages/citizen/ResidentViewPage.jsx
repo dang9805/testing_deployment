@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StatusModal } from "../../layouts/StatusModal";
 import { ConfirmationModal } from "../../layouts/ConfirmationModal";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 // import acceptIcon from "../images/accept_icon.png";
 // import notAcceptIcon from "../images/not_accept_icon.png";
 
@@ -58,7 +60,7 @@ const ResidentFormModal = ({ isOpen, onClose, residentData, onSave, isViewing = 
             return;
         }
 
-        const url = isEditing ? `/api/residents/${formData.id}` : '/api/residents';
+        const url = isEditing ? `${API_BASE_URL}/residents/${formData.id}` : '${API_BASE_URL}/residents';
         const method = isEditing ? 'PUT' : 'POST';
 
         try {
@@ -225,7 +227,7 @@ export const ResidentViewPage = () => { // <<< ĐỔI TÊN COMPONENT
         setError('');
         try {
             // Vẫn gọi API đọc danh sách như bình thường
-            const response = await fetch('/api/residents'); 
+            const response = await fetch('${API_BASE_URL}/residents'); 
             if (!response.ok) {
                 throw new Error('Không thể tải dữ liệu cư dân.');
             }

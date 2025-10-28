@@ -3,6 +3,7 @@ import { StatusModal } from "../../layouts/StatusModal"; // <<< NEW: Import Stat
 import { ConfirmationModal } from "../../layouts/ConfirmationModal"; // <<< NEW: Import ConfirmationModal
 import acceptIcon from "../../images/accept_icon.png";
 import notAcceptIcon from "../../images/not_accept_icon.png";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Giả định bạn có component Modal để sử dụng lại cho việc Thêm/Sửa
 // Nếu chưa có, bạn có thể tự thay thế bằng một div cố định.
@@ -57,7 +58,7 @@ const ResidentFormModal = ({ isOpen, onClose, residentData, onSave, isViewing = 
             return;
         }
 
-        const url = isEditing ? `/api/residents/${formData.id}` : '/api/residents';
+        const url = isEditing ? `${API_BASE_URL}/residents/${formData.id}` : '${API_BASE_URL}/residents';
         const method = isEditing ? 'PUT' : 'POST';
 
         try {
@@ -231,7 +232,7 @@ export const ResidentsPage = () => {
         setIsLoading(true);
         setError('');
         try {
-            const response = await fetch('/api/residents'); 
+            const response = await fetch('${API_BASE_URL}/residents'); 
             if (!response.ok) {
                 throw new Error('Không thể tải dữ liệu cư dân.');
             }
@@ -320,7 +321,7 @@ export const ResidentsPage = () => {
         setIsConfirmModalOpen(false);
         
         try {
-            const response = await fetch(`/api/residents/${residentToDelete.id}`, {
+            const response = await fetch(`${API_BASE_URL}/residents/${residentToDelete.id}`, {
                 method: 'DELETE',
             });
             

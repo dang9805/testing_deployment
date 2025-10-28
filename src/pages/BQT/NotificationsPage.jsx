@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { StatusModal } from "../../layouts/StatusModal";
 import { ConfirmationModal } from "../../layouts/ConfirmationModal";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 import acceptIcon from "../../images/accept_icon.png";
 import notAcceptIcon from "../../images/not_accept_icon.png";
@@ -125,7 +126,7 @@ export const NotificationsPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-        const response = await fetch('/api/notifications'); 
+        const response = await fetch('${API_BASE_URL}/notifications'); 
         if (!response.ok) {
             throw new Error('Không thể tải dữ liệu thông báo.');
         }
@@ -181,7 +182,7 @@ export const NotificationsPage = () => {
     handleCloseAddModal(); // Đóng modal thêm
 
     try {
-        const response = await fetch('/api/notifications', {
+        const response = await fetch('${API_BASE_URL}/notifications', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -242,7 +243,7 @@ export const NotificationsPage = () => {
       setError(null);
 
       try {
-          const response = await fetch(`/api/notifications/${editingNotification.id}`, {
+          const response = await fetch(`${API_BASE_URL}/notifications/${editingNotification.id}`, {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -316,7 +317,7 @@ export const NotificationsPage = () => {
     setError(null);
     
     try {
-        const response = await fetch(`/api/notifications/${itemToDeleteId}`, {
+        const response = await fetch(`${API_BASE_URL}/notifications/${itemToDeleteId}`, {
             method: 'DELETE',
         });
         

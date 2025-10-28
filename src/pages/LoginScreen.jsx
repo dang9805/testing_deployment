@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import passwordIcon from "../images/password_icon.svg";
 import loginBtn from "../images/login_btn.svg";
 import username from "../images/username_field.svg";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const Box = () => {
   const [usernameValue, setUsernameValue] = useState("");
@@ -21,7 +22,7 @@ export const Box = () => {
 
     try {
       // 2. Gọi API bằng proxy (bắt đầu bằng '/api')
-      const response = await fetch('/api/login', {
+      const response = await fetch('${API_BASE_URL}/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
