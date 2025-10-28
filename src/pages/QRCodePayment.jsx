@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 // --- Component hiển thị modal trạng thái ---
 import { StatusModal } from "../layouts/StatusModal"; 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // --- Import ảnh ---
 import qrImage from "../images/qr.png";
@@ -44,7 +45,7 @@ export const QRCodePayment = () => {
   useEffect(() => {
     const fetchPaymentDetails = async () => {
       try {
-        const response = await fetch(`/api/payments/${invoiceId}`); // API GET one payment by id
+        const response = await fetch(`${API_BASE_URL}/payments/${invoiceId}`); // API GET one payment by id
         if (!response.ok) {
           throw new Error('Không tìm thấy hóa đơn.');
         }
@@ -90,7 +91,7 @@ export const QRCodePayment = () => {
     // 2. Call the payment callback API 
     if (paymentDetails.transactionRef) {
         try {
-            const response = await fetch('/api/payment/callback', {
+            const response = await fetch(`${API_BASE_URL}/payment/callback`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
