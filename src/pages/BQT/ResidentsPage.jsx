@@ -58,7 +58,7 @@ const ResidentFormModal = ({ isOpen, onClose, residentData, onSave, isViewing = 
             return;
         }
 
-        const url = isEditing ? `${API_BASE_URL}/residents/${formData.id}` : '${API_BASE_URL}/residents';
+        const url = isEditing ? `${API_BASE_URL}/residents/${formData.id}` : `${API_BASE_URL}/residents`;
         const method = isEditing ? 'PUT' : 'POST';
 
         try {
