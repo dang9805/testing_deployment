@@ -1,4 +1,4 @@
-USE building_management;
+USE defaultdb;
 -- DÙNG CHO US 001: cư dân
 CREATE TABLE residents (
   id serial PRIMARY KEY ,
