@@ -16,7 +16,8 @@
       "use": "@vercel/static-build",
       "config": {
         "installCommand": "npm install --prefix BE && npm install",
-        "buildCommand": "npm run build"
+        "buildCommand": "npm run build",
+        "outputDirectory": "dist"  
       }
     }
   ],
@@ -25,9 +26,10 @@
       "src": "/api/(.*)",
       "dest": "BE/app.js"
     },
+
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/dist/index.html" 
     }
   ],
   "installCommand": "npm install --prefix BE && npm install"
