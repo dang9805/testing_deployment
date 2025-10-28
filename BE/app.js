@@ -2,7 +2,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const cors = require('cors'); // <-- THÊM DÒNG NÀY
 
 app.use(express.json());
@@ -454,7 +454,8 @@ app.get('/health', (req, res) => res.json({ ok: true }));
 
 // Start server
 app.listen(port, () => {
-  console.log(`🚀 Server chạy tại http://localhost:${port}`);
+  // console.log(`🚀 Server chạy tại http://localhost:${port}`);
+  console.log(port);
 });
 
 // -------- API ĐĂNG NHẬP --------
@@ -484,3 +485,5 @@ app.post('/login', (req, res) => {
     res.json({ message: 'Đăng nhập thành công', user: user });
   });
 });
+
+module.exports = app;
